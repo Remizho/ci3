@@ -7,4 +7,9 @@ class Myweb extends CI_Controller {
 	{
 		$this->load->view('myhome');
 	}
+
+	public function profil()
+	{
+		$this->load->view('myprofil');
+	}
 }

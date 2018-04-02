@@ -23,13 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li ><a href="myweb">Home</a></li>
-            <li class="active"><a href="myprof">About</a></li>
-            <li><a href="#">Tutorial</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" >Sign in</a></li>
-            <li><a href="#">Sign up</a></li>
+            <li ><a href="../myweb">Home</a></li>
+            <li class="active"><a href="profil">About</a></li>
+            <li><a href="../blog">Blog</a></li>
           </ul>
         </div>
       </div>
