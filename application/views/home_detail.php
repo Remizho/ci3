@@ -44,6 +44,7 @@
             <li><a href="../../myweb">Home</a></li>
             <li><a href="../../myweb/profil">About</a></li>
             <li class="active"><a href="../../blog">Blog</a></li>
+            <li><a href="../../teman">Friends</a></li>
           </ul>
         </div>
       </div>
