@@ -42,6 +42,8 @@
       </div>
 
   <h3>Choose the artikels : </h3>
+  <a href="blog/add" class="btn btn-primary">Add Artikel</a>
+  <br><br>
   <div class="row">
 
     <?php foreach($data->result_array() as $u) :
@@ -65,6 +67,10 @@
         </a>
         </div>
         <div class="panel-footer"><center> diupload tanggal : <?php echo $tggl_atk ?></div>
+        <div class="panel-footer"><center> 
+          <a href='blog/edit/<?php echo $id_atk?>' class='btn btn-sm btn-info'>Update</a>
+          <a href='blog/delete/<?php echo $id_atk?>' class='btn btn-sm btn-danger'>Hapus</a>
+        </div>
       </div>
     </div>
 

@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Coba Bootstrap</a>
+          <a class="navbar-brand" href="#">My Web</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
