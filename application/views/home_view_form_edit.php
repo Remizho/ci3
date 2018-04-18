@@ -3,7 +3,7 @@
 <head>
 	<base href="<?=base_url()?>">
 	<meta charset="UTF-8">
-	<title>Add Blog</title>
+	<title>Update Blog</title>
 	<link rel="stylesheet" href="css/style.css"> 
 	<link rel="stylesheet" media="all" href="<?php echo base_url()?>assets/css/bootstrap.min.css" type="text/css">
 
@@ -27,15 +27,11 @@
     <br><br><br>
 
 	<div class="container">
-		<h1>Buat Articel</h1>
+		<h1>Edit Articel</h1>
 
 		<!--<form method="post" class="form-horizontal" enctype="multipart/form-data">-->
 
-			<?php    
-				$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');
-			?>
-			<?php echo validation_errors(); ?>
-			<?php echo form_open_multipart( 'blog/add', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
+			<form method="post" class="form-horizontal" enctype="multipart/form-data">
 
 			<div class="form-group">
 				<label for="judul_atk" class="control-label col-sm-2">
@@ -43,9 +39,8 @@
 				</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="judul_atk" value="<?=isset($default['judul_atk'])? $default['judul_atk'] : ""?>" required>
-					<div class="invalid-feedback">Isi judul dulu gan</div>
 				</div>
-			</div><br><br>
+			</div>
 
 			<div class="form-group">
 				<label class="control-label col-sm-2">
@@ -53,9 +48,8 @@
 				</label>
 				<div class="col-sm-10">
 					<textarea name="isi_atk" class="form-control" required><?=isset($default['isi_atk'])? $default['isi_atk'] : ""?></textarea>
-					<div class="invalid-feedback">Isi konten dulu gan</div>
 				</div>
-			</div><br><br><br>
+			</div>
 
 			<div class="form-group">
 		      <label class="control-label col-sm-2">Gambar :</label>
@@ -63,7 +57,7 @@
 		      <div class="col-sm-10">
 		        <span class="input-group-addon"><input type="file" required name="foto_atk" class="file"></span>
 		      </div><br>
-		    </div><br>
+		    </div>
 
 			<div class="form-group">
 				<label class="control-label col-sm-2">
@@ -71,9 +65,8 @@
 				</label>
 				<div class="col-sm-10">
 					<input type="date" required class="form-control" name="tggl_atk" value="<?=isset($default['tggl_atk'])? $default['tggl_atk'] : ""?>">
-					<div class="invalid-feedback">Pilih tanggal dulu gan</div>
 				</div>
-			</div><br><br>
+			</div>
 
 			<div class="form-group">
 				<label class="control-label col-sm-2">
@@ -82,12 +75,12 @@
 				<div class="col-sm-10">
 					<select id="warna" name="kategori_atk" class="form-control" required="">
 						<option value="">--</option>
-						<option value="Bola">Bola</option>
-						<option value="Teknologi">Teknologi</option>
-						<option value="Hiburan">Hiburan</option>
+						<option <?php if($default['kategori_atk'] == 'Bola'){ echo 'selected'; } ?>>Bola</option>
+						<option <?php if($default['kategori_atk'] == 'Teknologi'){ echo 'selected'; } ?>>Teknologi</option>
+						<option <?php if($default['kategori_atk'] == 'Hiburan'){ echo 'selected'; } ?>>Hiburan</option>
 					</select>
 				</div>
-			</div><br><br>
+			</div>
 
 			<div class="form-group">
 				<label class="control-label col-sm-2">
@@ -96,8 +89,7 @@
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="sumber_atk" value="<?=isset($default['sumber_atk'])? $default['sumber_atk'] : ""?>" required>
 				</div>
-			</div><br><br>
-
+			</div>
 			<center>
 			<input class="btn btn-primary" type="submit" name="simpan" value="simpan">
 			</center>

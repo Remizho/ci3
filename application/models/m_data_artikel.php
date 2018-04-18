@@ -43,7 +43,10 @@ class M_data_artikel extends CI_Model{
 			'judul_atk' => $this->input->post('judul_atk'),
 			'isi_atk' => $this->input->post('isi_atk'),
 			'foto_atk' => $upload['file']['file_name'],
-			'tggl_atk' => $this->input->post('tggl_atk')			
+			'tggl_atk' => $this->input->post('tggl_atk'),
+			'tggl_buat_atk' => date("Y-m-d H:i:s"),
+			'kategori_atk' => $this->input->post('kategori_atk'),
+			'sumber_atk' => $this->input->post('sumber_atk'),
 		);
 		
 		$this->db->insert('artikel', $data);
@@ -54,8 +57,11 @@ class M_data_artikel extends CI_Model{
 		$judul_atk = $this->db->escape($post['judul_atk']);
 		$isi_atk = $this->db->escape($post['isi_atk']);
 		$tggl_atk = $this->db->escape($post['tggl_atk']);
+		$tggl_buat = date("Y-m-d H:i:s");
+		$kategori_atk = $this->db->escape($post['kategori_atk']);
+		$sumber_atk = $this->db->escape($post['sumber_atk']);
 
-		$sql = $this->db->query("UPDATE artikel SET judul_atk = $judul_atk, isi_atk = $isi_atk, tggl_atk = $tggl_atk WHERE id_atk = ".intval($id));
+		$sql = $this->db->query("UPDATE artikel SET judul_atk = $judul_atk, isi_atk = $isi_atk, tggl_atk = $tggl_atk, kategori_atk = $kategori_atk, sumber_atk = $sumber_atk WHERE id_atk = ".intval($id));
 
 		return true;
 	}

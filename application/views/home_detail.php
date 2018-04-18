@@ -64,7 +64,7 @@
           <!-- Author -->
           <p class="lead">
             by
-            <a href="#">ade</a>
+            <?php echo $data['sumber_atk']; ?>
           </p>
 
           <hr>

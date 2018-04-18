@@ -22,26 +22,63 @@ class Blog extends CI_Controller {
 
 	public function add()
 	{
-		$this->load->model('m_data_artikel');
 		$data['tipe'] = "Add";
+		$this->load->model('m_data_artikel');
 
-		if ($this->input->post('simpan')) {
-			$upload = $this->m_data_artikel->upload();
+		$this->load->helper('form');
+	    $this->load->library('form_validation');
 
-			if ($upload['result'] == 'success') {
-				$this->m_data_artikel->save($upload);
-				redirect('blog');
-			}else{
-				$data['message'] = $upload['error'];
+	    // Kita validasi input sederhana, sila cek http://localhost/ci3/user_guide/libraries/form_validation.html
+	    $this->form_validation->set_rules('judul_atk', 'Judul', 'required|is_unique[artikel.judul_atk]',
+			array(
+				'required' 		=> 'Tolong isi %s ya, pliss.',
+				'is_unique' 	=> 'Judul ' .$this->input->post('judul_atk'). ' sudah ada loo.'
+			));
+
+		$this->form_validation->set_rules('isi_atk', 'Konten', 'required|min_length[8]',
+			array(
+				'required' 		=> 'Isi %s dulu gan.',
+				'min_length' 	=> 'Isi %s kurang panjang lo gan.',
+			));
+
+		$this->form_validation->set_rules('tggl_atk', 'Tanggal', 'required',
+			array(
+				'required' 		=> 'Isi %s sek to.',
+			));
+
+		$this->form_validation->set_rules('sumber_atk', 'Sumbere', 'required',
+			array(
+				'required' 		=> 'Isi %s dulu looo.',
+			));
+
+		if ($this->form_validation->run() === FALSE)
+	    {
+	        $this->load->view('home_view_form');
+
+	    } else {
+
+			if ($this->input->post('simpan')) {
+				$upload = $this->m_data_artikel->upload();
+
+				if ($upload['result'] == 'success') {
+					$this->m_data_artikel->save($upload);
+					redirect('blog');
+				}else{
+					$data['message'] = $upload['error'];
+				}
 			}
-		}
 
-		$this->load->view('home_view_form', $data);
+			$this->load->view('home_view_form', $data);
+		}
 	}
 
 	public function edit($id){
 		$this->load->model("m_data_artikel");
-		$data['tipe'] = "Edit";
+
+		$this->load->helper('form');
+	    $this->load->library('form_validation');
+
+
 		$data['default'] = $this->m_data_artikel->get_single($id);
 
 		if(isset($_POST['simpan'])){
@@ -49,7 +86,7 @@ class Blog extends CI_Controller {
 			redirect("blog");
 		}
 
-		$this->load->view("home_view_form",$data);
+		$this->load->view("home_view_form_edit",$data);
 	}
 
 

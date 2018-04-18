@@ -52,6 +52,8 @@
       $isi_atk=$u['isi_atk'];
       $foto_atk=$u['foto_atk'];
       $tggl_atk=$u['tggl_atk'];
+      $tggl_buat=$u['tggl_buat_atk'];
+      $sumber=$u['sumber_atk'];
      ?>
 
     <div class="col-sm-4">
@@ -63,13 +65,22 @@
         </div>
         <div class="panel-body">
         <a href="blog/detail/<?php echo $u['id_atk'] ?>" > 
-        <img src="<?php echo base_url().'assets/img/'.$foto_atk ?>" class="img-responsive" alt="Cinque Terre"/ >
+        <img src="<?php echo base_url().'assets/img/'.$foto_atk ?>" style="width:350px;height:220px" class="img-responsive" alt="Cinque Terre"/ >
         </a>
         </div>
-        <div class="panel-footer"><center> diupload tanggal : <?php echo $tggl_atk ?></div>
-        <div class="panel-footer"><center> 
-          <a href='blog/edit/<?php echo $id_atk?>' class='btn btn-sm btn-info'>Update</a>
-          <a href='blog/delete/<?php echo $id_atk?>' class='btn btn-sm btn-danger'>Hapus</a>
+        <div class="panel-footer"><?php echo substr( $isi_atk , 0, 80)?>...</div>
+        <div class="panel-footer">
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                      <!-- Untuk link detail -->
+                      <a href='blog/detail/<?php echo $u['id_atk'] ?>' class='btn btn-sm btn-info'>Baca</a>
+                      <a href='blog/edit/<?php echo $id_atk?>' class='btn btn-sm btn-info'>Update</a>
+                      <a href='blog/delete/<?php echo $id_atk?>' class='btn btn-sm btn-danger'>Hapus</a>
+                  </div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  <small class="text-muted"><?php echo $tggl_buat ?></small>
+                </div>
+
         </div>
       </div>
     </div>
