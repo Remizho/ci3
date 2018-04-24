@@ -81,10 +81,10 @@
 				</label>
 				<div class="col-sm-10">
 					<select id="warna" name="kategori_atk" class="form-control" required="">
-						<option value="">--</option>
-						<option value="Bola">Bola</option>
-						<option value="Teknologi">Teknologi</option>
-						<option value="Hiburan">Hiburan</option>
+						<option value="">Pilih</option>
+						<?php foreach($categories as $category): ?>
+						<option value="<?php echo $category->id; ?>"><?php echo $category->cat_name; ?></option>
+						<?php endforeach; ?>
 					</select>
 				</div>
 			</div><br><br>

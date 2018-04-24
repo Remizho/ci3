@@ -70,4 +70,15 @@ class M_data_artikel extends CI_Model{
 		$sql = $this->db->query("DELETE from artikel WHERE id_atk = ".intval($id));
 	}	
 
+	public function get_artikel_by_category($category_id)
+    {
+
+        $this->db->order_by('artikel.id_blog', 'DESC');
+
+        $this->db->join('categories', 'categories.id = artikel.id_blog');
+        $query = $this->db->get_where('artikel', array('id' => $category_id));
+  
+        return $query->result();
+    }
+
 }

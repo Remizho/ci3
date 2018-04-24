@@ -5,7 +5,10 @@ class Blog extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
+		$this->load->helper('MY');
+		
 		$this->load->model('m_data_artikel');
+		$this->load->model('category_model');
 	}
 
 	public function index()

@@ -26,6 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li ><a href="../myweb">Home</a></li>
             <li class="active"><a href="profil">About</a></li>
             <li><a href="../blog">Blog</a></li>
+            <li><a href="../category">Category</a></li>
             <li><a href="../teman">Friends</a></li>
           </ul>
         </div>
