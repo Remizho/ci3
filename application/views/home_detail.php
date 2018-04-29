@@ -70,7 +70,7 @@
           <hr>
 
           <!-- Date/Time -->
-          <p>Posted on <?php echo $data['tggl_atk']; ?> at 12:00 PM</p>
+          <p>Posted on <?php echo $data['tggl_atk']; ?> at <?php echo time_ago($data['tggl_buat_atk']) ?></p>
 
           <hr>
 

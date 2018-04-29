@@ -43,43 +43,42 @@
       </div>
 
   <h3>Choose the artikels : </h3>
-  <a href="blog/add" class="btn btn-primary">Add Artikel</a>
+  <?php echo anchor('blog/add', 'Tulis Artikel', array('class' => 'btn btn-primary')); ?>
   <br><br>
   <div class="row">
 
-    <?php foreach($data->result_array() as $u) :
-      $id_atk=$u['id_atk'];
-      $judul_atk=$u['judul_atk'];
-      $isi_atk=$u['isi_atk'];
-      $foto_atk=$u['foto_atk'];
-      $tggl_atk=$u['tggl_atk'];
-      $tggl_buat=$u['tggl_buat_atk'];
-      $sumber=$u['sumber_atk'];
+    <?php foreach($data as $u) :
      ?>
 
     <div class="col-sm-4">
       <div class="panel panel-primary">
         <div class="panel-heading"><center>
-          <a style="text-decoration: none; color: white;" href="blog/detail/<?php echo $u['id_atk'] ?>" > 
-            <?php echo $judul_atk ?>
+          <a style="text-decoration: none; color: white;" href="blog/detail/<?php echo $u->id_atk ?>" > 
+            <?php echo $u->judul_atk ?>
           </a>
         </div>
+        <div class="panel-footer">
+          <small class="text-muted"><center><?php echo time_ago($u->tggl_buat_atk) ?></small>
+        </div>
         <div class="panel-body">
-        <a href="blog/detail/<?php echo $u['id_atk'] ?>" > 
-        <img src="<?php echo base_url().'assets/img/'.$foto_atk ?>" style="width:350px;height:220px" class="img-responsive" alt="Cinque Terre"/ >
+        <a href="blog/detail/<?php echo $u->id_atk ?>" > 
+        <img src="<?php echo base_url().'assets/img/'.$u->foto_atk ?>" style="width:350px;height:220px" class="img-responsive" alt="Cinque Terre"/ >
         </a>
         </div>
-        <div class="panel-footer"><?php echo substr( $isi_atk , 0, 80)?>...</div>
+        <div class="panel-footer">
+        cangkup : <small class="text-success text-uppercase"><u><?php echo $u->cat_name ?></u></small><br>
+        <?php echo substr( $u->isi_atk , 0, 80)?>...
+        </div>
         <div class="panel-footer">
 
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                       <!-- Untuk link detail -->
-                      <a href='blog/detail/<?php echo $u['id_atk'] ?>' class='btn btn-sm btn-info'>Baca</a>
-                      <a href='blog/edit/<?php echo $id_atk?>' class='btn btn-sm btn-info'>Update</a>
-                      <a href='blog/delete/<?php echo $id_atk?>' class='btn btn-sm btn-danger'>Hapus</a>
+                      <a href='blog/detail/<?php echo $u->id_atk ?>' class='btn btn-sm btn-info'>Baca</a>
+                      <a href='blog/edit/<?php echo $u->id_atk ?>' class='btn btn-sm btn-info'>Update</a>
+                      <a href='blog/delete/<?php echo $u->id_atk ?>' class='btn btn-sm btn-danger'>Hapus</a>
                   </div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                  <small class="text-muted"><?php echo $tggl_buat ?></small>
+                  <small class="text-muted"><?php echo $u->tggl_buat_atk ?></small>
                 </div>
 
         </div>

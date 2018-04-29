@@ -17,12 +17,12 @@
 			<div class="container">
 				<div class="row">
 
-					<div class="col-md-4">
+					<div class="col-md-12">
 						<!-- Kita format tampilan blog dalam bentuk card -->
 						<!-- https://getbootstrap.com/docs/4.0/components/card/ -->
 						<div class="card mb-4 box-shadow border-0">							
 							<div class="card-body">
-								<table class="table">
+								<table class="table" >
 									<thead>
 										<tr>
 											<th>#</th>
@@ -42,6 +42,7 @@
 											<td><?php echo character_limiter($key->cat_name, 40) ?></td>
 											<td><?php echo word_limiter($key->cat_description, 20) ?></td>
 											<td>
+												<a href="<?php echo base_url('category/'.$key->id) ?>" class="btn btn-primary">Lihat Artikel</a>
 												<a href="<?php echo base_url(). 'category/edit/' . $key->id ?>" class="btn btn-primary">edit</a>
 												<a href="<?php echo base_url(). 'category/delete/' . $key->id ?>" class="btn btn-primary btn-danger">Delete</a>
 											</td>
@@ -57,7 +58,7 @@
 			</div>
 		</div>
 		<?php else : ?>
-		<p><center>Belum ada data bosque.</p>
+		<p><center>Belum ada data</p>
 		<?php endif; ?>
 		
 	</main>

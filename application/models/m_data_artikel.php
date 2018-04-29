@@ -3,8 +3,17 @@
 class M_data_artikel extends CI_Model{
 
 	function Get_artikel(){
-		$query = $this->db->query('select * from artikel');
-		return $query;
+		//$query = $this->db->query('select * from artikel');
+		//return $query;
+		$this->db->order_by('artikel.tggl_buat_atk', 'DESC');
+
+        // Inner Join dengan table Categories
+        $this->db->join('categories', 'categories.id = artikel.fk_cat_id');
+        
+        $query = $this->db->get('artikel');
+
+    	// Return dalam bentuk object
+    	return $query->result();
 	}
 
 	function Get_single($id){
@@ -45,7 +54,7 @@ class M_data_artikel extends CI_Model{
 			'foto_atk' => $upload['file']['file_name'],
 			'tggl_atk' => $this->input->post('tggl_atk'),
 			'tggl_buat_atk' => date("Y-m-d H:i:s"),
-			'kategori_atk' => $this->input->post('kategori_atk'),
+			'fk_cat_id' => $this->input->post('id'),
 			'sumber_atk' => $this->input->post('sumber_atk'),
 		);
 		
@@ -58,10 +67,10 @@ class M_data_artikel extends CI_Model{
 		$isi_atk = $this->db->escape($post['isi_atk']);
 		$tggl_atk = $this->db->escape($post['tggl_atk']);
 		$tggl_buat = date("Y-m-d H:i:s");
-		$kategori_atk = $this->db->escape($post['kategori_atk']);
+		$kategori_atk = $this->db->escape($post['id']);
 		$sumber_atk = $this->db->escape($post['sumber_atk']);
 
-		$sql = $this->db->query("UPDATE artikel SET judul_atk = $judul_atk, isi_atk = $isi_atk, tggl_atk = $tggl_atk, kategori_atk = $kategori_atk, sumber_atk = $sumber_atk WHERE id_atk = ".intval($id));
+		$sql = $this->db->query("UPDATE artikel SET judul_atk = $judul_atk, isi_atk = $isi_atk, tggl_atk = $tggl_atk, fk_cat_id = $kategori_atk, sumber_atk = $sumber_atk WHERE id_atk = ".intval($id));
 
 		return true;
 	}
@@ -75,7 +84,7 @@ class M_data_artikel extends CI_Model{
 
         $this->db->order_by('artikel.id_blog', 'DESC');
 
-        $this->db->join('categories', 'categories.id = artikel.id_blog');
+        $this->db->join('categories', 'categories.id = artikel.fk_cat_id');
         $query = $this->db->get_where('artikel', array('id' => $category_id));
   
         return $query->result();

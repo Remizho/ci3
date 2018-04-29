@@ -80,12 +80,8 @@
 					Kategori
 				</label>
 				<div class="col-sm-10">
-					<select id="warna" name="kategori_atk" class="form-control" required="">
-						<option value="">Pilih</option>
-						<?php foreach($categories as $category): ?>
-						<option value="<?php echo $category->id; ?>"><?php echo $category->cat_name; ?></option>
-						<?php endforeach; ?>
-					</select>
+						<?php echo form_dropdown('id', $categories, set_value('id'), 'class="form-control" required' ); ?>
+					<div class="invalid-feedback">Pilih Kategori</div>
 				</div>
 			</div><br><br>
 
@@ -95,6 +91,7 @@
 				</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="sumber_atk" value="<?=isset($default['sumber_atk'])? $default['sumber_atk'] : ""?>" required>
+					<div class="invalid-feedback">Isi sumber</div>
 				</div>
 			</div><br><br>
 

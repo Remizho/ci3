@@ -31,6 +31,8 @@ class Blog extends CI_Controller {
 		$this->load->helper('form');
 	    $this->load->library('form_validation');
 
+	    $data['categories'] = $this->category_model->generate_cat_dropdown();
+
 	    // Kita validasi input sederhana, sila cek http://localhost/ci3/user_guide/libraries/form_validation.html
 	    $this->form_validation->set_rules('judul_atk', 'Judul', 'required|is_unique[artikel.judul_atk]',
 			array(
@@ -56,7 +58,7 @@ class Blog extends CI_Controller {
 
 		if ($this->form_validation->run() === FALSE)
 	    {
-	        $this->load->view('home_view_form');
+	        $this->load->view('home_view_form',$data);
 
 	    } else {
 
@@ -80,6 +82,7 @@ class Blog extends CI_Controller {
 
 		$this->load->helper('form');
 	    $this->load->library('form_validation');
+	    $data['categories'] = $this->category_model->generate_cat_dropdown();
 
 
 		$data['default'] = $this->m_data_artikel->get_single($id);

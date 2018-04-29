@@ -73,12 +73,7 @@
 					Kategori
 				</label>
 				<div class="col-sm-10">
-					<select id="warna" name="kategori_atk" class="form-control" required="">
-						<option value="">--</option>
-						<option <?php if($default['kategori_atk'] == 'Bola'){ echo 'selected'; } ?>>Bola</option>
-						<option <?php if($default['kategori_atk'] == 'Teknologi'){ echo 'selected'; } ?>>Teknologi</option>
-						<option <?php if($default['kategori_atk'] == 'Hiburan'){ echo 'selected'; } ?>>Hiburan</option>
-					</select>
+					<?php echo form_dropdown('id', $categories, set_value( 'id' ), 'class="form-control" required' ); ?>
 				</div>
 			</div>
 
