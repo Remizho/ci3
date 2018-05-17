@@ -14,6 +14,34 @@ class Blog extends CI_Controller {
 	public function index()
 	{
 		$data['data'] = $this->m_data_artikel->Get_artikel();
+
+		// Dapatkan data dari model Blog dengan pagination
+		// Jumlah artikel per halaman
+		$limit_per_page = 3;
+
+		// URI segment untuk mendeteksi "halaman ke berapa" dari URL
+		$start_index = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : 0;
+
+		// Dapatkan jumlah data 
+		$total_records = $this->m_data_artikel->get_total();
+		
+		if ($total_records > 0) {
+			// Dapatkan data pada halaman yg dituju
+			$data["data"] = $this->m_data_artikel->get_artikel($limit_per_page, $start_index);
+			
+			// Konfigurasi pagination
+			$config['base_url'] = base_url() . 'blog/index';
+			$config['total_rows'] = $total_records;
+			$config['per_page'] = $limit_per_page;
+			$config["uri_segment"] = 3;
+			
+			$this->pagination->initialize($config);
+				
+			// Buat link pagination
+			$data["links"] = $this->pagination->create_links();
+		}
+
+
 		$this->load->view('home_view',$data);
 	}
 

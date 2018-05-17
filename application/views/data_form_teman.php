@@ -19,6 +19,7 @@
             <li><a href="myweb">Home</a></li>
             <li><a href="myweb/profil">About</a></li>
             <li><a href="blog">Blog</a></li>
+            <li><a href="<?php echo base_url()?>datatable">Table Blog</a></li>
             <li class="active"><a href="teman">Friends</a></li>
           </ul>
         </div>

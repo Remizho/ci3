@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
   <script src="<?php echo base_url()?>assets/js/jquery.min.js"></script>
   <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/jquery-1.9.1.min.js"></script>
   <style>
    
     /* Add a gray background color and some padding to the footer */
@@ -29,7 +30,15 @@
             <li><a href="<?php echo base_url()?>myweb">Home</a></li>
             <li><a href="<?php echo base_url()?>myweb/profil">About</a></li>
             <li><a href="<?php echo base_url()?>blog">Blog</a></li>
-            <li class="active"><a href="<?php echo base_url()?>category">Category</a></li>
+            <li><a href="<?php echo base_url()?>category">Category</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Datatable
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="<?php echo base_url()?>datatable">Basic Table</a></li>
+                  <li><a href="<?php echo base_url()?>datatable/view_json">Json Table</a></li>
+              </ul>
+            </li>
             <li><a href="<?php echo base_url()?>teman">Friends</a></li>
           </ul>
         </div>

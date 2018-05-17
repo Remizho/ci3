@@ -26,11 +26,19 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="myweb">Home</a></li>
-            <li><a href="myweb/profil">About</a></li>
-            <li class="active"><a href="#">Blog</a></li>
-            <li><a href="category">Category</a></li>
-            <li><a href="teman">Friends</a></li>
+            <li><a href="<?php echo base_url()?>myweb">Home</a></li>
+            <li><a href="<?php echo base_url()?>myweb/profil">About</a></li>
+            <li><a href="<?php echo base_url()?>blog">Blog</a></li>
+            <li><a href="<?php echo base_url()?>category">Category</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo base_url()?>datatable">Datatable
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="<?php echo base_url()?>datatable">Basic Table</a></li>
+                  <li><a href="<?php echo base_url()?>datatable/view_json">Json Table</a></li>
+              </ul>
+            </li>
+            <li><a href="<?php echo base_url()?>teman">Friends</a></li>
           </ul>
         </div>
       </div>
@@ -86,8 +94,16 @@
     </div>
 
     <?php endforeach; ?>
-
   </div>  
+    <center>
+    <?php 
+      // $links ini berasal dari fungsi pagination 
+      // Jika $links ada (data melebihi jumlah max per page), maka tampilkan
+      if (isset($links)) {
+        echo $links;
+      } 
+    ?>
+    </center>
 
 </div><br><br>
 
@@ -98,6 +114,14 @@
     <button type="button" class="btn btn-danger">Sign Up</button>
   </form>
 </footer>
+
+<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="<?php echo base_url() ?>assets/js/holder.min.js"></script>
+
+    <!-- Custom -->
+    <script src="<?php echo base_url() ?>assets/js/custom.js"></script>
 
 </body>
 </html>

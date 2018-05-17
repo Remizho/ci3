@@ -2,7 +2,11 @@
 
 class M_data_artikel extends CI_Model{
 
-	function Get_artikel(){
+	function Get_artikel($limit = FALSE, $offset = FALSE ){
+
+		if ( $limit ) {
+            $this->db->limit($limit, $offset);
+        }
 		//$query = $this->db->query('select * from artikel');
 		//return $query;
 		$this->db->order_by('artikel.tggl_buat_atk', 'DESC');
@@ -15,6 +19,12 @@ class M_data_artikel extends CI_Model{
     	// Return dalam bentuk object
     	return $query->result();
 	}
+
+	public function get_total() 
+    {
+        // Dapatkan jumlah total artikel
+        return $this->db->count_all("artikel");
+    }
 
 	function Get_single($id){
 		$data = array();
