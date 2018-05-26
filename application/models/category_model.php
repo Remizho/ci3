@@ -12,7 +12,7 @@ class Category_model extends CI_Model
     public function get_all_categories()
     {
         // Urutkan berdasar abjad
-        $this->db->order_by('cat_name');
+        $this->db->order_by('cat_id', 'DESC');
 
         $query = $this->db->get('categories');
         return $query->result();
@@ -31,25 +31,25 @@ class Category_model extends CI_Model
     // Dapatkan kategori berdasar ID
     public function get_category_by_id($id)
     {
-        $query = $this->db->get_where('categories', array('id' => $id));
+        $query = $this->db->get_where('categories', array('cat_id' => $id));
         return $query->row();
-    }
-
-    public function delete_category($id)
-    {
-        if ( !empty($id) ){
-            $delete = $this->db->delete('categories', array('id'=>$id) );
-            return $delete ? true : false;
-        } else {
-            return false;
-        }
     }
 
     public function update_category($data, $id) 
     {
         if ( !empty($data) && !empty($id) ){
-            $update = $this->db->update( 'categories', $data, array('id'=>$id) );
+            $update = $this->db->update( 'categories', $data, array('cat_id'=>$id) );
             return $update ? true : false;
+        } else {
+            return false;
+        }
+    }
+
+    public function delete_category($id)
+    {
+        if ( !empty($id) ){
+            $delete = $this->db->delete('categories', array('cat_id'=>$id) );
+            return $delete ? true : false;
         } else {
             return false;
         }
@@ -60,7 +60,7 @@ class Category_model extends CI_Model
 
         // Mendapatkan data ID dan nama kategori saja
         $this->db->select ('
-            categories.id,
+            categories.cat_id,
             categories.cat_name
         ');
 
@@ -78,7 +78,7 @@ class Category_model extends CI_Model
             
             foreach ($result->result_array() as $row) {
                 // Buat array berisi 'value' (id kategori) dan 'nama' (nama kategori)
-                $dropdown[$row['id']] = $row['cat_name'];
+                $dropdown[$row['cat_id']] = $row['cat_name'];
             }
         }
 

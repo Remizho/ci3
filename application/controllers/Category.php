@@ -6,11 +6,10 @@ class Category extends CI_Controller{
 	{
 		parent::__construct();
 
-		// Load custom helper applications/helpers/MY_helper.php
+
 		$this->load->helper('MY');
 
-		// Load semua model yang kita pakai
-		$this->load->model('m_data_artikel');
+		$this->load->model('blog_model');
 		$this->load->model('category_model');
 	}
 
@@ -31,7 +30,7 @@ class Category extends CI_Controller{
 	public function create() 
 	{
 		// Judul Halaman
-		$data['page_title'] = 'Buat Kategori';
+		$data['page_title'] = 'Buat Kategori Baru';
 
 		// Kita butuh helper dan library berikut
 		$this->load->helper('form');
@@ -44,7 +43,7 @@ class Category extends CI_Controller{
 			'required|is_unique[categories.cat_name]',
 			array(
 				'required' => 'Isi %s donk, males amat.',
-				'is_unique' => 'Judul ' . $this->input->post('title') . ' sudah ada bosque.'
+				'is_unique' => 'Judul <strong>' . $this->input->post('cat_name') . '</strong> sudah ada bosque.'
 			)
 		);
 
@@ -61,15 +60,20 @@ class Category extends CI_Controller{
 	// Menampilkan semua artikel dalam kategori yang dipilih
 	public function artikel($id) 
 	{
-		$data['page_title'] = $this->category_model->get_category_by_id($id)->cat_name;
+
 		// Menampilkan judul berdasar nama kategorinya
+		$data['page_title'] = $this->category_model->get_category_by_id($id)->cat_name;
+
 		// Dapatkan semua artikel dalam kategori ini
-		$data['data'] = $this->m_data_artikel->get_artikel_by_category($id);
+		$data['all_artikel'] = $this->blog_model->get_artikel_by_category($id);
 
 		// Kita gunakan view yang sama pada controller Blog
-		$this->load->view('home_view', $data);
+		$this->load->view('templates/header');
+		$this->load->view('blogs/blog_view', $data);
+		$this->load->view('templates/footer');
 	}
 
+	// Membuat fungsi edit
 	public function edit($id = NULL)
 	{
 
@@ -107,9 +111,9 @@ class Category extends CI_Controller{
     		
     		// Update kategori sesuai post_data dan id-nya
 	        if ($this->category_model->update_category($post_data, $id)) {
-		        $this->load->view('myhome', $data);
+		        $this->load->view('blogs/blog_success', $data);
 	        } else {
-		        $this->load->view('myhome', $data);
+		        $this->load->view('blogs/blog_failed', $data);
 	        }
 	        $this->load->view('templates/footer'); 
 
@@ -125,7 +129,7 @@ class Category extends CI_Controller{
 		$this->category_model->delete_category($id);
 
 		$this->load->view('templates/header');
-		$this->load->view('myhome', $data);
+		$this->load->view('blogs/blog_success', $data);
 		$this->load->view('templates/footer'); 
 
 	}

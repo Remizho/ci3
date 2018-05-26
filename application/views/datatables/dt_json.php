@@ -1,10 +1,10 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-
-<main role="main">
+<br><br>
+<main role="main" class="bg-light">
 
 	<section class="jumbotron text-center">
 		<div class="container">
-			<h1 class="jumbotron-heading">JSON DataTables</h1>
+			<h1 class="jumbotron-heading">Json DataTables</h1>
 			
 		</div>
     </section>
@@ -16,9 +16,10 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Judul Artikel</th>
-                            <th>Content</th>
+                            <th>Tanggal</th>
+                            <th>Judul</th>
                             <th>Kategori</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -35,17 +36,18 @@
     jQuery(document).ready(function(){
 
         $('#dt-ajax').DataTable({
-            "ajax": "<?php echo base_url() ?>datatable/get_json",
+            "ajax": "<?php echo base_url() ?>datatables/get_json",
             "columns": [
-                { "data": "id_atk" },
-                { "data": "judul_atk" },
-                { "data": "isi_atk" },
+                { "data": "post_id" },
+                { "data": "date_created" },
+                { "data": "post_title" },
                 { "data": "cat_name" },
+                { "data": "post_status" },
                 // Kolom Action
                 { 
                     "data" : null,
                     "render": function (data) {
-                        return '<a href="<?php echo base_url('blog/edit/') ?>'+ data.id_atk + '" class="btn btn-sm btn-outline-primary">Edit</a> <a href="<?php echo base_url('blog/delete/') ?>'+ data.id_atk + '" class="btn btn-sm btn-outline-danger">Delete</a>' 
+                        return '<a href="<?php echo base_url('blog/edit/') ?>'+ data.post_id + '" class="btn btn-sm btn-outline-primary">Edit</a> <a href="<?php echo base_url('blog/delete/') ?>'+ data.post_id + '" class="btn btn-sm btn-outline-danger">Delete</a>' 
                     }
                 },
             ],

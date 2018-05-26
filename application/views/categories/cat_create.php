@@ -1,9 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<br><br><br>
 <!-- Begin page content -->
 <main role="main" class="container">
 	<section class="jumbotron text-center">
 		<div class="container">
-			<h1 class="jumbotron-heading">Buat Kategori Baru</h1>
+			<h1 class="jumbotron-heading"><?php echo $page_title ?></h1>
 		</div>
 	</section>
 	<section>
@@ -15,8 +16,6 @@
 						$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');
 					?>
 					<?php echo validation_errors(); ?>
-
-					<?php echo (isset( $upload_error)) ? '<div class="alert alert-warning" role="alert">' .$upload_error. '</div>' : ''; ?>
 
 					<?php echo form_open( 'category/create', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
 
@@ -36,5 +35,4 @@
 		</div>
 	</div>
 </section>
-</main>
-<br><br><br><br>
+</main><br><br>

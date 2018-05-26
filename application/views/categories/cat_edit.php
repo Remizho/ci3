@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<!-- Begin page content -->
+<!-- Begin page content --><br><br><br>
 <main role="main" class="container">
 	<section class="jumbotron text-center">
 		<div class="container">
@@ -31,11 +31,10 @@
 						<div class="invalid-feedback">Isi deskripsinya dulu gan</div>
 					</div>
 					<button id="submitBtn" type="submit" class="btn btn-primary">Simpan</button>
-					<a href="<?php echo base_url() ?>category/delete/<?php echo $category->id ?>" class="btn btn-danger">Hapus</a>
+					<a href="<?php echo base_url() ?>category/delete/<?php echo $category->cat_id ?>" class="btn btn-danger">Hapus</a>
 				</form>
-				<br><br>
 			</div>
 		</div>
 	</div>
 </section>
-</main>
+</main><br><br><br>
