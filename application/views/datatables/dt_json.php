@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<br><br>
+
 <main role="main" class="bg-light">
 
 	<section class="jumbotron text-center">

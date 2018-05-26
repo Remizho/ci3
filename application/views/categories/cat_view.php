@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<br><br>
+
 	<!-- Begin page content -->
 	<main role="main" class="bg-light">
 		<section class="jumbotron text-center">
@@ -38,7 +38,7 @@
 										<!-- Untuk link detail -->
 										<a href="<?php echo base_url('category/'.$key->cat_id) ?>" class="btn btn-outline-secondary">Lihat Artikel</a>
 										<a href="<?php echo base_url(). 'category/edit/' . $key->cat_id ?>" class="btn btn-outline-secondary">Edit</a>
-										<a href="<?php echo base_url() ?>category/delete/<?php echo $key->cat_id ?>" class="btn btn-danger">Hapus</a>
+										<a href="<?php echo base_url() ?>category/delete/<?php echo $key->cat_id ?>" onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger">Hapus</a>
 									</div>
 								</div>
 							</div>

@@ -1,6 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-	<br><br>
 	<!-- Begin page content -->
 	<main role="main" >
 		<section class="jumbotron text-center">
@@ -40,7 +39,7 @@
 						              <div class="btn-group">
 														<!-- Untuk link detail -->
 														<a href="<?php echo base_url(). 'blog/read/' . $key->post_slug ?>" class="btn btn-outline-secondary">Baca</a>
-														<a href="<?php echo base_url(). 'blog/edit/' . $key->post_id ?>" class="btn btn-outline-secondary">Edit</a>
+														<a href="<?php echo base_url(). 'blog/edit/' . $key->post_id ?>" class="btn btn-outline-primary">Edit</a>
 													</div>
 
 		            </div>

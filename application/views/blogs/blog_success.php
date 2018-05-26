@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<br><br><br>
+<br>
 <div class="container">	
 	<!-- Begin page content -->
 	<main role="main" class="container">

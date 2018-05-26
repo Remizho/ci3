@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 
-<br><br><br>
 <!-- Begin page content -->
 	<div class="container">
 
@@ -11,7 +10,7 @@
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.html">Home</a>
+          <a href="<?php echo base_url()?>">Home</a>
         </li>
         <li class="breadcrumb-item active">Blog Home 2</li>
       </ol>
@@ -49,7 +48,7 @@
 					<hr>
 					<div class="highlight text-center">
 						<a href="<?php echo site_url( 'blog/edit/'.$artikel->post_id) ?>" class="btn btn-secondary">Edit</a>
-						<a href="<?php echo site_url( 'blog/delete/'.$artikel->post_id) ?>" class="btn btn-danger">Hapus</a>
+						<a href="<?php echo site_url( 'blog/delete/'.$artikel->post_id) ?>" onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger">Hapus</a>
 					</div>
 				</div>
 			</div>

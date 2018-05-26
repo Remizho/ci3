@@ -1,8 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?>
- 
- <br><br><br>
+?><br>
  <!-- INI ADALAH TAMPILAN MENU UTAMA -->
     <div class="container">
       <div class="jumbotron text-center">
@@ -47,5 +45,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </center>
       </div>
     </div>
-</body>
-</html>
+    <br>

@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<br><br><br>
+<br>
 <!-- Begin page content -->
 <main role="main" class="container">
 	<section class="jumbotron text-center">
@@ -40,7 +40,7 @@
 						<label for="thumbnail">Gambar thumbnail</label><br>
 						<!-- Load thumbnail, jika ada -->
 						<?php if( $artikel->post_thumbnail ) : ?>
-						<img class="card-img-top" src="<?php echo base_url() .'assets/img/'. $artikel->post_thumbnail ?>" alt="Card image cap" style="height:400px;width:300px">
+						<img class="card-img-top" src="<?php echo base_url() .'assets/img/'. $artikel->post_thumbnail ?>" alt="Card image cap" style="height:400px;width:550px">
 						<?php endif; ?>
 
 						<input type="file" class="form-control-file" name="thumbnail">

@@ -88,9 +88,9 @@ class Blog extends CI_Controller {
 	public function create()
 	{
 		// Cek login
-		//if(!$this->session->userdata('logged_in')){
-		//	redirect('user/login');
-		//}
+		if(!$this->session->userdata('logged_in')){
+			redirect('user/login');
+		}
 
 		$data['page_title'] = 'Tulis Artikel';
 
@@ -191,6 +191,10 @@ class Blog extends CI_Controller {
 	// Membuat fungsi edit
 	public function edit($id = NULL)
 	{
+		if(!$this->session->userdata('logged_in')){
+			redirect('user/login');
+		}
+
 
 		$data['page_title'] = 'Edit Artikel';
 
@@ -234,7 +238,7 @@ class Blog extends CI_Controller {
     			// Konfigurasi folder upload & file yang diijinkan
     			// Jangan lupa buat folder uploads di dalam ci3-course
     			$config['upload_path']          = './assets/img/';
-    	        $config['allowed_types']        = 'gif|jpg|png';
+    	        $config['allowed_types']        = 'gif|jpg|png|jpeg';
     	        $config['max_size']             = 2024;
 
     	        // Load library upload
@@ -256,8 +260,8 @@ class Blog extends CI_Controller {
 
     	        	// Hapus file image yang lama jika ada
     	        	if( !empty($old_image) ) {
-    	        		if ( file_exists( './uploads/'.$old_image ) ){
-    	        		    unlink( './uploads/'.$old_image );
+    	        		if ( file_exists( './assets/img/'.$old_image ) ){
+    	        		    unlink( './assets/img_data/'.$old_image );
     	        		} else {
     	        		    echo 'File tidak ditemukan.';
     	        		}
@@ -299,6 +303,10 @@ class Blog extends CI_Controller {
 	// Membuat fungsi delete
 	public function delete($id)
 	{
+		if(!$this->session->userdata('logged_in')){
+			redirect('user/login');
+		}
+
 
 		$data['page_title'] = 'Delete artikel';
 

@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<!-- Begin page content --><br><br><br>
+<!-- Begin page content --><br>
 <main role="main" class="container">
 	<section class="jumbotron text-center">
 		<div class="container">
@@ -31,7 +31,7 @@
 						<div class="invalid-feedback">Isi deskripsinya dulu gan</div>
 					</div>
 					<button id="submitBtn" type="submit" class="btn btn-primary">Simpan</button>
-					<a href="<?php echo base_url() ?>category/delete/<?php echo $category->cat_id ?>" class="btn btn-danger">Hapus</a>
+					<a href="<?php echo base_url() ?>category/delete/<?php echo $category->cat_id ?>" onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger">Hapus</a>
 				</form>
 			</div>
 		</div>
