@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <!-- INI ADALAH TAMPILAN MENU UTAMA -->
 <main role="main">
 <img src="<?php echo base_url()?>assets/img/ade3.jpg" alt="Los Angeles" style="width:100%;height:500px">
