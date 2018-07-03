@@ -13,45 +13,23 @@
   <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-
-      <?php if(!$this->session->userdata('logged_in')) : ?>
-        <a class="navbar-brand" href="<?php echo base_url()?>">Website CI Ade</a>
-      <?php endif; ?>
-
-      <?php if($this->session->userdata('logged_in')) : ?>
-        <a class="navbar-brand" href="<?php echo base_url()?>">ADMIN</a>
-      <?php endif; ?>
+        <a class="navbar-brand" href="<?php echo base_url()?>">Member Perunggu</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url()?>myweb">Home</a>
+              <a class="nav-link" href="<?php echo base_url()?>user/dashboard">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url()?>myweb/profil">About</a>
+              <a class="nav-link" href="<?php echo base_url()?>user/member2_about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url()?>blog">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url()?>category">Catagory</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url()?>admin">Admin</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Datatable
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="<?php echo base_url()?>datatables">datatable</a>
-                <a class="dropdown-item" href="<?php echo base_url()?>datatables/view_json">Json (ajax)</a>
-              </div>
+              <a class="nav-link" href="<?php echo base_url()?>user/member2_blog">Blog</a>
             </li>
             
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
             <?php if(!$this->session->userdata('logged_in')) : ?>
               <div class="btn-group" role="group" aria-label="Data baru">

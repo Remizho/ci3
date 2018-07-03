@@ -10,6 +10,8 @@ class User extends CI_Controller{
 		$this->load->library('form_validation');
 		$this->load->helper('MY');
 		$this->load->model('user_model');
+		$this->load->model('blog_model');
+		$this->load->model('category_model');
 	}
 
 	// Register user
@@ -48,7 +50,7 @@ class User extends CI_Controller{
 
 		if($this->form_validation->run() === FALSE){
 			$this->load->view('templates/header');
-			$this->load->view('users/login', $data);
+			$this->load->view('users/login',$data);
 			$this->load->view('templates/footer');
 		} else {
 			
@@ -66,7 +68,7 @@ class User extends CI_Controller{
 			'user_id' => $user_id,
 			'username' => $username,
 			'logged_in' => true,
-			'level' => $this->user_model->get_user_level($user_id),
+			'fk_level_id' => $this->user_model->get_user_level($user_id),
 		);
 
 		$this->session->set_userdata($user_data);
@@ -97,6 +99,10 @@ class User extends CI_Controller{
 		redirect('user/login');
 	}
 
+	public function get_userdata(){
+        $userData = $this->session->userdata();
+        return $userData;
+       }
 	// Fungsi Dashboard
 	function dashboard()
 	{
@@ -105,13 +111,104 @@ class User extends CI_Controller{
 			redirect('user/login');
 
 		$user_id = $this->session->userdata('user_id');
-
-		// Dapatkan detail dari User
-		$data['user'] = $this->user_model->get_user_details( $user_id );
-
-		// Load view
-		$this->load->view('templates/header', $data, FALSE);
-		$this->load->view('users/dashboard', $data, FALSE);
-		$this->load->view('templates/footer', $data, FALSE);
+        // Dapatkan detail user
+        $data['user'] = $this->user_model->get_user_details( $user_id );
+ 		$userData = $this->get_userdata();
+        if ($userData['fk_level_id'] === '1'){
+            $this->load->view('templates/header');
+            $this->load->view('users/dashboard', $data);
+            $this->load->view('templates/footer');
+        } else if ($userData['fk_level_id'] === '2'){
+            $this->load->view('templates/header_member1');
+            $this->load->view('users/dashboard', $data);
+            $this->load->view('templates/footer');
+        } else if ($userData['fk_level_id'] === '3') {
+            $this->load->view('templates/header_member2');
+            $this->load->view('users/dashboard', $data);
+            $this->load->view('templates/footer');
+        }
 	}
+
+	public function member1_about(){
+		$this->load->view('templates/header_member1');
+		$this->load->view('page/myprofil');
+		$this->load->view('templates/footer');
+	}
+
+	public function member2_about(){
+		$this->load->view('templates/header_member2');
+		$this->load->view('page/myprofil');
+		$this->load->view('templates/footer');
+	}
+
+	public function member1_blog(){
+		$data['page_title'] = 'IKI ARTIKEL'; 
+		
+		// Dapatkan data dari model Blog dengan pagination
+		// Jumlah artikel per halaman
+		$limit_per_page = 4;
+
+		// URI segment untuk mendeteksi "halaman ke berapa" dari URL
+		$start_index = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : 0;
+
+		// Dapatkan jumlah data 
+		$total_records = $this->blog_model->get_total();
+		
+		if ($total_records > 0) {
+			// Dapatkan data pada halaman yg dituju
+			$data["all_artikel"] = $this->blog_model->get_all_artikel($limit_per_page, $start_index);
+			
+			// Konfigurasi pagination
+			$config['base_url'] = base_url() . 'blog/index';
+			$config['total_rows'] = $total_records;
+			$config['per_page'] = $limit_per_page;
+			$config["uri_segment"] = 3;
+			
+			$this->pagination->initialize($config);
+				
+			// Buat link pagination
+			$data["links"] = $this->pagination->create_links();
+		}
+
+		$this->load->view("templates/header_member1");
+		// Passing data ke view
+		$this->load->view('blogs/blog_view', $data);
+		$this->load->view("templates/footer");
+	}
+
+	public function member2_blog(){
+		$data['page_title'] = 'IKI ARTIKEL'; 
+		
+		// Dapatkan data dari model Blog dengan pagination
+		// Jumlah artikel per halaman
+		$limit_per_page = 4;
+
+		// URI segment untuk mendeteksi "halaman ke berapa" dari URL
+		$start_index = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : 0;
+
+		// Dapatkan jumlah data 
+		$total_records = $this->blog_model->get_total();
+		
+		if ($total_records > 0) {
+			// Dapatkan data pada halaman yg dituju
+			$data["all_artikel"] = $this->blog_model->get_all_artikel($limit_per_page, $start_index);
+			
+			// Konfigurasi pagination
+			$config['base_url'] = base_url() . 'blog/index';
+			$config['total_rows'] = $total_records;
+			$config['per_page'] = $limit_per_page;
+			$config["uri_segment"] = 3;
+			
+			$this->pagination->initialize($config);
+				
+			// Buat link pagination
+			$data["links"] = $this->pagination->create_links();
+		}
+
+		$this->load->view("templates/header_member2");
+		// Passing data ke view
+		$this->load->view('blogs/blog_view_member2', $data);
+		$this->load->view("templates/footer");
+	}
+
 }

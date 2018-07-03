@@ -47,11 +47,12 @@ class User_model extends CI_Model {
         $result = $this->db->get('users');
 
         if($result->num_rows() == 1){
-            return $result->row(0);
+            return $result->row(0)->fk_level_id;
         } else {
             return false;
         }
     }
+
 
     function get_user_details($user_id)
     {
@@ -61,7 +62,7 @@ class User_model extends CI_Model {
         $result = $this->db->get('users');
 
         if($result->num_rows() == 1){
-            return $result->row(0);
+            return $result->row();
         } else {
             return false;
         }
